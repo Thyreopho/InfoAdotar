@@ -5,7 +5,7 @@ $(document).ready(function() {
             $("#loginFormEmail").val(),
             $("#loginFormPassword").val(),
             function () {
-                window.location.href = "infoAjudar.html"
+                window.location.href = "home.html"
             },
             function (msg) {
                 alert(msg);

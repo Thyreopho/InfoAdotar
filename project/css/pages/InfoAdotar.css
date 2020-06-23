@@ -1,0 +1,77 @@
+main{
+    background-color: #ffffff;
+}
+.ok{
+    margin-right: 1em;
+    margin-left: 1em;
+    
+}
+.ko{
+    margin-top: 1em;
+    
+    
+}
+.grafico{
+   
+   width: 250px;
+   height: 250px;
+   align-items:center;
+   
+}
+.color{
+    background-color:  #b4a7d6;
+}
+.color2{
+    background-color:  #957cd4;
+}
+.escrever{
+    max-width: 200px;
+    border: thick solid black;
+    border-radius: 150px;
+    margin-left: 3em;
+    
+}
+.write{
+    align-items:center;
+    margin-left: 2em;
+    margin-top:0.5em;
+    color: black;
+}
+.profile-pic{
+    border: thick solid black;
+}
+.ko2{
+    margin-top:2em;
+}
+.nome{
+    
+    margin-top: 0.5em;
+}
+
+
+@media screen and (min-width:990px) and (max-width:1500px){
+    .grafico{
+        width:200px;
+        align-items:center;
+    }
+    .escrever{
+        max-width: 150px;
+        margin-left: -1em;
+    }
+    .write{
+        align-items:center;
+        margin-left: -0.3em;
+    }
+ }
+ @media screen and  (max-width:990px){
+     
+     .write{
+       align-items:center;
+        
+    }
+ }
+    @media screen and (min-width:990px) and (max-width:1500px){
+        .profile{
+            margin-left: 3em;
+        }
+    }
