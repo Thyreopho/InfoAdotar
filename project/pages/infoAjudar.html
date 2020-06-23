@@ -22,6 +22,8 @@
     <script src="../js/dal/dal.js"></script>
     <script src="../js/controller/userController.js"></script>
     <script src="../js/controller/faqController.js"></script>
+    <script src="../js/controller/passoController.js"></script>
+    <script src="../js/controller/userPassoController.js"></script>
     <script src="../js/main.js"></script>
     <script src="../js/pages/infoAjudar.js"></script>
 
@@ -67,53 +69,19 @@
                 </div>
                 <div class="card-body">
                     <div class="progress">
-                        <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: 25%"
-                            aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                        <div id="passosProgress" class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: 0%"
+                            aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
                         </div>
                     </div>
                     <div class="progress-labels">
-                        <span class="progress-label-item">
-                            Passo 1
-                        </span>
-                        <span class="progress-label-item">
-                            Passo 2
-                        </span>
-                        <span class="progress-label-item">
-                            Passo 3
-                        </span>
-                        <span class="progress-label-item">
-                            Passo 4
-                        </span>
-                        <span class="progress-label-item">
-                            Passo 5
-                        </span>
                     </div>
                 </div>
             </div>
             <div id="infoAjudarContent" class="t-grid-2-1">
                 <div id="stepsCarousel" class="carousel slide" data-interval="false">
                     <ol class="carousel-indicators">
-                        <li data-target="#stepsCarousel" data-slide-to="0" class="active"></li>
                     </ol>
                     <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <div class="card carousel-step">
-                                <div class="card-header d-flex justify-content-between">
-                                    <h3>Passo X</h3>
-                                    <span>
-                                        Feito?
-                                        <input class="mt-auto mb-auto" type="checkbox" />
-                                    </span>
-                                </div>
-                                <div class="card-body">
-                                    <h4>Lorem ipsum dolor sit amet consectetur.</h4>
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis a officia natus
-                                    molestias error pariatur accusantium dignissimos labore dicta iusto! Labore
-                                    repudiandae
-                                    aspernatur maiores amet minus aliquam consequatur corporis atque.
-                                </div>
-                            </div>
-                        </div>
                     </div>
                     <a class="carousel-control-prev" href="#stepsCarousel" role="button" data-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>

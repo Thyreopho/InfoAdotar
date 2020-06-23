@@ -1,12 +1,12 @@
 //<summary>
 //Create a new model instance
 //</summary>
-function Faq(titulo, texto) {
+function Passo(titulo, texto) {
     this.titulo = titulo;
     this.texto = texto;
 }
 
-class FaqController {
+class PassoController {
 
     constructor(table) {
         this.table = table;
@@ -31,11 +31,19 @@ class FaqController {
 
         //Business Logic
         if (result) {
-            if (model.titulo.length < 6)
-                falseCallback("\"Título\" não pode ser menor que 6 caracteres");
-            else if (model.texto.length < 10)
-                falseCallback("\"Texto\" não pode ser menor que 10 caracteres");
-            else trueCallback();
+            DAL.filter(
+                this.table,
+                function (e) { return e.titulo == model.titulo && e.id != model.id },
+                function (list) {
+                    if (list.length > 0)
+                        falseCallback("Passo já existente");
+                    else
+                        trueCallback();
+                },
+                function () {
+                    falseCallback("Erro ao buscar dados pela DAL");
+                }
+            );
         }
         else falseCallback("Modelo de dados não é compativel");
     }
@@ -78,21 +86,46 @@ class FaqController {
 
     //#region Special methods
 
-    createFaqQuestionCard(model) {
+    createCarouselStepCard(model) {
         let result =
-            ('<div class="card">' +
-                '<div class="card-header" id="headingOne">' +
-                '<button class="btn btn-link" data-toggle="collapse" data-target="#faqItem{id}Body">' +
-                '{titulo}' +
-                '</button>' +
+            ('<div class="carousel-step card">' +
+                '<div class="card-header d-flex justify-content-between">' +
+                '<h3>{titulo}</h3>' +
+                '<span>' +
+                'Feito?' +
+                '<input class="step-checkbox mt-auto mb-auto" type="checkbox" value="{id}"/>' +
+                '</span>' +
                 '</div>' +
-                '<div id="faqItem{id}Body" class="card-body collapse">' +
+                '<div class="card-body">' +
                 '{texto}' +
                 '</div>' +
                 '</div>')
                 .replace(/{id}/g, model.id)
                 .replace(/{titulo}/g, model.titulo)
                 .replace(/{texto}/g, model.texto);
+
+        return result;
+    }
+
+    createCarouselStepCard(model, num) {
+        let result =
+            ('<div class="carousel-step card">' +
+                '<div class="card-header d-flex justify-content-between">' +
+                '<h3>{titulo}</h3>' +
+                '<span>' +
+                'Feito?' +
+                '<input class="step-checkbox mt-auto mb-auto" type="checkbox" value="{id}"/>' +
+                '</span>' +
+                '</div>' +
+                '<div class="card-body">' +
+                '<h4>Passo {num}</h4>' +
+                '{texto}' +
+                '</div>' +
+                '</div>')
+                .replace(/{id}/g, model.id)
+                .replace(/{titulo}/g, model.titulo)
+                .replace(/{texto}/g, model.texto)
+                .replace(/{num}/g, num);
 
         return result;
     }

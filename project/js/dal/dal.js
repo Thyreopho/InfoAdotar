@@ -77,7 +77,7 @@ class DAL {
             if (typeof table == 'string' && typeof data == 'object' && data.id && typeof data.id == 'number') {
                 let tableData = JSON.parse(localStorage.getItem(table));
                 let index = tableData.findIndex(function (item) { return item.id == data.id });
-                if (index) {
+                if (typeof index == 'number'? index >= 0 : false) {
                     Object.keys(data).forEach(function (name) {
                         tableData[index][name] = data[name];
                     });
@@ -138,14 +138,14 @@ class DAL {
     //<param name="id">the data object id</param>
     static delete(table, id, success, error) {
         if (typeof success == 'function' && typeof error == 'function') {
-            if (typeof table == 'string' && id == 'number') {
+            if (typeof table == 'string' && typeof id == 'number') {
                 let tableData = JSON.parse(localStorage.getItem(table));
                 let index = tableData.findIndex(function (item) { return item.id == id });
-                if (index) {
+                if (typeof index == 'number'? index >= 0 : false) {
                     tableData.splice(index, 1)
                     localStorage.setItem(table, JSON.stringify(tableData));
                     success();
-                } error(`Item com id ${id} não foi encontrado em ${table}`);
+                } else error(`Item com id ${id} não foi encontrado em ${table}`);
             } else error("\"table\" não é do tipo string ou \"id\" não é do tipo number");
         }
     }

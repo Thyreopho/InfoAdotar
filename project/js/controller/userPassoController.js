@@ -1,12 +1,12 @@
 //<summary>
 //Create a new model instance
 //</summary>
-function Faq(titulo, texto) {
-    this.titulo = titulo;
-    this.texto = texto;
+function UserPasso(idUser, idPasso) {
+    this.idUser = idUser;
+    this.idPasso = idPasso;
 }
 
-class FaqController {
+class UserPassoController {
 
     constructor(table) {
         this.table = table;
@@ -26,16 +26,24 @@ class FaqController {
     isValid(model, trueCallback, falseCallback) {
         let result =
             typeof model.id == 'undefined' ? true : (typeof model.id == 'number' && model.id > 0) &&
-                model.titulo && typeof model.titulo == 'string' &&
-                model.texto && typeof model.texto == 'string';
+                model.idUser && typeof model.idUser == 'number' &&
+                model.idPasso && typeof model.idPasso == 'number';
 
         //Business Logic
         if (result) {
-            if (model.titulo.length < 6)
-                falseCallback("\"Título\" não pode ser menor que 6 caracteres");
-            else if (model.texto.length < 10)
-                falseCallback("\"Texto\" não pode ser menor que 10 caracteres");
-            else trueCallback();
+            DAL.filter(
+                this.table,
+                function (e) { return e.idUser == model.idUser && e.idPasso == model.idPasso && e.id != model.id },
+                function (list) {
+                    if (list.length > 0)
+                        falseCallback("Passo já concluído");
+                    else
+                        trueCallback();
+                },
+                function () {
+                    falseCallback("Erro ao buscar dados pela DAL");
+                }
+            );
         }
         else falseCallback("Modelo de dados não é compativel");
     }
@@ -75,27 +83,4 @@ class FaqController {
     delete(id, success, error) {
         DAL.delete(this.table, id, success, error);
     }
-
-    //#region Special methods
-
-    createFaqQuestionCard(model) {
-        let result =
-            ('<div class="card">' +
-                '<div class="card-header" id="headingOne">' +
-                '<button class="btn btn-link" data-toggle="collapse" data-target="#faqItem{id}Body">' +
-                '{titulo}' +
-                '</button>' +
-                '</div>' +
-                '<div id="faqItem{id}Body" class="card-body collapse">' +
-                '{texto}' +
-                '</div>' +
-                '</div>')
-                .replace(/{id}/g, model.id)
-                .replace(/{titulo}/g, model.titulo)
-                .replace(/{texto}/g, model.texto);
-
-        return result;
-    }
-
-    //#endregion
 }
