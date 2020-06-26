@@ -62,6 +62,10 @@ function userLoggedEnvironment() {
     loggedUser = userController.getLoggedUser();
 
     $("#pageHeader > .menu-toggle").click(function () {
+        if($("#menu").css("display")=="none")
+        {
+         $("#mainContent").animate({marginLeft: '136'});
+         } else $("#mainContent").animate({marginLeft: '0'});
         $('#menu').animate({ width: 'toggle' });
     });
 
