@@ -1,4 +1,4 @@
-
+//Versão do João
 $.getJSON("../js/devDataBase.json", function (data) {
 let tela = document.getElementById("fArea");
 let content="";
@@ -26,3 +26,22 @@ for(let i=0;i<3;i++)
 }
 tela.innerHTML=content;
 }).done();
+
+//Versão do Felipe
+
+//#region Controllers
+
+var faqController;
+
+//#endregion
+
+//Espaço que é chamado quando o susário é verificado
+$(document).on("userLogged", function () {
+    //#region Setting Controllers
+
+        //Variavel faqController permite o acesso aos dados da FAQ
+        //Obs: olhar js/controller/faqController.js
+        faqController = new FaqController(faqTable);
+
+    //#endregion
+});

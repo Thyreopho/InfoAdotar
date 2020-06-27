@@ -1,11 +1,10 @@
-
-
 //#region Tables Keys
 
 const userTable = "TbUser";
 const faqTable = "TbFaq";
 const passosTable = "TbPasso";
 const userPassosTable = "TbUserPasso";
+const comunidadeTable = "TbComunidade";
 
 //#endregion
 
@@ -18,9 +17,6 @@ var loggedUser;
 //#region Controllers
 
 var userController;
-var faqController;
-var passoController;
-var userPassoController;
 
 //#endregion
 
@@ -34,8 +30,8 @@ $(document).ready(function () {
 
     //#endregion
 
-    //Verify if the current page is not the login page
-    if (!window.location.pathname.endsWith("index.html")) {
+    //Verify if the current page is not the login page or the cadastro page
+    if (!window.location.pathname.endsWith("index.html") && !window.location.pathname.endsWith("cadastro.html")) {
 
         if (userController.isLoggedIn()) {
             userLoggedEnvironment();
@@ -46,18 +42,11 @@ $(document).ready(function () {
     else {
         userController.logout();
         $(document).trigger("setDevDataBase");
+        $(document).trigger("userNotLogged");
     }
 });
 
 function userLoggedEnvironment() {
-
-    //#region Setting Controllers
-
-    faqController = new FaqController(faqTable);
-    passoController = new PassoController(passosTable);
-    userPassoController = new UserPassoController(userPassosTable);
-
-    //#endregion
 
     loggedUser = userController.getLoggedUser();
 

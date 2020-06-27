@@ -1,3 +1,11 @@
+//#region Controllers
+
+var faqController;
+var passoController;
+var comunidadeController;
+
+//#endregion
+
 $(document).ready(function() {
     $("#loginForm").submit(function(e) {
         e.preventDefault();
@@ -11,7 +19,7 @@ $(document).ready(function() {
                 alert(msg);
             }
         )
-    })
+    });
 });
 
 $(document).on("setDevDataBase", function () {
@@ -19,6 +27,7 @@ $(document).on("setDevDataBase", function () {
 
     faqController = new FaqController(faqTable);
     passoController = new PassoController(passosTable);
+    comunidadeController = new ComunidadeController(comunidadeTable);
 
     //#endregion
 
@@ -72,6 +81,23 @@ $(document).on("setDevDataBase", function () {
             function (list) {
                 if (list.length == 0) {
                     createPassos();
+                }
+            },
+            function (msg) {
+                alert("Erro na criação do banco de dados de teste: " + msg)
+            });
+
+        //Criando Comunidades
+        let createComunidade = function () {
+            data.TbComunidade.forEach(function (val) {
+                comunidadeController.create(val, function () { }, function () { countError++; })
+            });
+        }
+
+        comunidadeController.readAll(
+            function (list) {
+                if (list.length == 0) {
+                    createComunidade();
                 }
             },
             function (msg) {

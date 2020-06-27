@@ -1,4 +1,20 @@
+//#region Controllers
+
+var faqController;
+var passoController;
+var userPassoController;
+
+//#endregion
+
 $(document).on("userLogged", function () {
+    //#region Setting Controllers
+
+    faqController = new FaqController(faqTable);
+    passoController = new PassoController(passosTable);
+    userPassoController = new UserPassoController(userPassosTable);
+
+    //#endregion
+
     faqController.readAll(
         function (list) {
             list.forEach(function (val) {

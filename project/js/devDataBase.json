@@ -46,5 +46,26 @@
             "titulo": "Passo 4",
             "texto": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fugit voluptatem fuga facilis, absit, quos veritatis repellat, quaerat corrupti consectetur aperiam perspiciatis voluptas sapiente neque consequuntur. Natus quis voluptate laudantium?"
         }
+    ],
+    "TbComunidade":
+    [
+        { 
+            "idUser": 1,
+            "titulo": "Pais de primeira viagem",
+            "descricao": "Grupo de WhatsApp para pais adotivos de primeira viagem de Belo Horizonte.",
+            "url": "https://web.whatsapp.com/grupo"
+        },
+        { 
+            "idUser": 1,
+            "titulo": "Advogados da vara da infância",
+            "descricao": "Comunidade de advogados para ajuda de pais adotivos.",
+            "url": "https://web.whatsapp.com/grupo"
+        },
+        { 
+            "idUser": 1,
+            "titulo": "Time de futebol da morosidade do barreiro",
+            "descricao": "Time de futebol dos pais adotivos do barreiro. Jogos toda sexta as 18h.",
+            "url": "https://web.whatsapp.com/grupo"
+        }
     ]
 }
