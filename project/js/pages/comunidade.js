@@ -15,4 +15,18 @@ $(document).on("userLogged", function () {
         comunidadeController = new ComunidadeController(comunidadeTable);
 
     //#endregion
+
+    //Exemplos:
+        
+        //Usando o comunidadeController
+        comunidadeController.readAll(
+            function (list) {
+                for (let i = 0; i < list.length; i++) {
+                    console.log(`${i + 1}ª comunidade: ${lits[i].titulo}`);
+                }
+            },
+            function () {
+                console.log("Ocorreu um erro ao listar as comunidades");
+            }
+        );
 });

@@ -27,7 +27,7 @@ $(document).on("userLogged", function () {
                 }
             },
             function () {
-                console.log("Ocorreu um erro ao listar o usuário");
+                console.log("Ocorreu um erro ao listar os usuários");
             }
         );
 
