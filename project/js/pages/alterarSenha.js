@@ -21,7 +21,7 @@ $(document).on("userNotLogged", function () {
         userController.readAll(
             function (list) {
                 for (let i = 0; i < list.length; i++) {
-                    console.log(`${i + 1}º usuário: ${lits[i].nome}`);
+                    console.log(`${i + 1}º usuário: ${list[i].nome}`);
                 }
             },
             function () {

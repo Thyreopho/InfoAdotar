@@ -22,7 +22,7 @@ $(document).on("userLogged", function () {
         comunidadeController.readAll(
             function (list) {
                 for (let i = 0; i < list.length; i++) {
-                    console.log(`${i + 1}ª comunidade: ${lits[i].titulo}`);
+                    console.log(`${i + 1}ª comunidade: ${list[i].titulo}`);
                 }
             },
             function () {
