@@ -145,6 +145,67 @@
         
     /*#endregion*/
 
+    /*#region rate-post-list*/
+
+        .rate-post-list {
+            border: 0px;
+            padding: 0px;
+            margin: 0px;
+            display: flex;
+            flex-wrap: nowrap;
+            justify-content: start;
+            font-size: 20px;
+        }
+
+        .rate-post-list > li {
+            border: 0px;
+            padding: 0px;
+            margin: 0px;
+            display: inline-block;
+        }
+
+        .rate-post-list > li {
+            font-weight: bolder;
+        }
+
+        .rate-post-list:not(.rated) > li::before {
+            content: "✰";
+        }
+
+        /*#region hover comportament*/
+        
+            .rate-post-list:not(.rated):hover {
+                cursor: pointer;
+            }
+
+            .rate-post-list:not(.rated):hover > li::before {
+                content: "★";
+            }
+
+            .rate-post-list:not(.rated) > li:hover::before {
+                content: "★";
+            }
+
+            .rate-post-list:hover:not(.rated) > li:hover ~ li::before {
+                content: "✰";
+            }
+
+        /*#endregion*/
+
+        /*#region rated comportament*/
+
+            .rate-post-list.rated > li::before {
+                content: "★";
+            }
+
+            .rate-post-list.rated > li.rate-post-ok ~ li::before {
+                content: "✰";
+            }
+
+        /*#endregion*/
+
+    /*#endregion*/
+
 /*#endregion*/
 
 /*#region Layout*/

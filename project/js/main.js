@@ -4,6 +4,8 @@ const userTable = "TbUser";
 const faqTable = "TbFaq";
 const passosTable = "TbPasso";
 const userPassosTable = "TbUserPasso";
+const postTable = "TbPost";
+const postRatingTable = "TbPostRating";
 const comunidadeTable = "TbComunidade";
 
 //#endregion
