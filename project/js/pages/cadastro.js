@@ -17,6 +17,7 @@ function NovoUsuario() {
         userController.create(cadastraUsuario,
             function () {
                 alert("Cadastro realizado com sucesso!");
+                event.preventDefault('#loginForm');
                 window.location.href = "/project/pages/index.html"
             
             },
@@ -44,6 +45,7 @@ $(document).on("userNotLogged", function () {
     //#endregion
 
     $("#btncadastrar").click(NovoUsuario);
+    
 
 
     //Exemplos:
