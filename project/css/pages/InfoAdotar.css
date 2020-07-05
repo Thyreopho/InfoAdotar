@@ -12,7 +12,7 @@ main{
     
 }
 .write1{
-  height: 3em;
+  height: 3em;  
   margin-top: 1em;
   align-items: center;
   margin-left: 2em;
@@ -24,8 +24,8 @@ main{
 }
 .grafico{
    
-   width: 250px;
-   height: 250px;
+   width: 300px;
+   height: 300px;
    align-items:center;
    
 }
@@ -52,7 +52,9 @@ main{
     
     margin-top: 0.5em;
 }
-
+.d-flex{
+   display: flex;
+}
 
 @media screen and (min-width:990px) and (max-width:1500px){
     .grafico{
@@ -73,6 +75,9 @@ main{
      .write{
        align-items:center;
         
+    }
+    .d-flex{
+        flex-wrap: wrap;
     }
  }
 @media screen and (min-width:990px) and (max-width:1500px){
