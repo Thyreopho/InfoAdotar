@@ -17,7 +17,7 @@ function NovoUsuario() {
         userController.create(cadastraUsuario,
             function () {
                 alert("Cadastro realizado com sucesso!");
-                window.location.href='index.html';
+                window.location.href = "/project/pages/index.html"
             
             },
             function (msg) {
