@@ -10,7 +10,7 @@ $(document).ready(function() {
     $("#loginForm").submit(function(e) {
         e.preventDefault();
         userController.login(
-            $("#loginFormEmail").val(),
+            $("#loginFormEmail").val().toLowerCase(),
             $("#loginFormPassword").val(),
             function () {
                 window.location.href = "home.html"
