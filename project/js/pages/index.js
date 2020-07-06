@@ -20,7 +20,7 @@ function newSenha(){
       
      userController.update(novasenha,
       function(){
-          alert("Sucesso ao mudar senha!Por favor saia e entre em sua conta novamente.")
+          alert("Sucesso ao mudar senha!")
       },
       function(msg){
           alert("Erro ao mudar senha:"+msg)
@@ -42,15 +42,23 @@ function EsqueciSenha(){
  let email=$("#email").val().toLowerCase();
  let nome=$("#nome").val();
  
- let emailverdadeiro= $("#loginFormEmail").val().toLowerCase();
- let nomeverdadeiro=$("#cadastroNome").val();
-   if(email==emailverdadeiro && nome==nomeverdadeiro){
-     newSenha();
-   }else{
-       alert("Nome ou email não encontrados!");
+ 
+ userController.read(loggedUser.id,
+    function (usuarioLogado) {
+         let usuario = usuarioLogado;
+         let nomeverdadeiro= usuario.nome;
+         let emailverdadeiro=usuario.email;
+         console.log(nomeverdadeiro,emailverdadeiro);
+         if(email==emailverdadeiro && nome==nomeverdadeiro){
+            newSenha();
+          }else{
+              alert("Nome ou email não encontrados!");
+          }
    }
-
+ )
 }
+
+
 $(document).ready(function() {
     $("#loginForm").submit(function(e) {
         e.preventDefault();
