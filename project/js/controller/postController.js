@@ -106,7 +106,7 @@ class PostController {
                             '<img src="../img/profile.png" class="profile-pic mr-3">' +
                             '<h3>{user.nome}</h3>' +
                             '</div>' +
-                            '<div>' +
+                            '<div class="d-none d-lg-block">' +
                             '<small>Minha Nota:</small>' +
                             '<ul class="rate-post-list">' +
                             '<li></li>' +
