@@ -15,7 +15,7 @@
 
     <!--CSS-->
     <link rel="stylesheet" href="../css/main.css" />
-    <link rel="stylesheet" href="../css/pages/comunidade.css"/>
+    <link rel="stylesheet" href="../css/pages/comunidade.css" />
 
     <!--JavaScript-->
     <script src="../js/util/util.js"></script>
@@ -23,6 +23,7 @@
     <script src="../js/controller/userController.js"></script>
     <script src="../js/controller/comunidadeController.js"></script>
     <script src="../js/main.js"></script>
+    <script src="../js/pages/comunidade.js"></script>
 
 </head>
 
@@ -37,7 +38,7 @@
         <div id="menu">
             <section class="menu-item">
                 <div class="profile-card">
-                    <a href="#"><img class="profile-pic" src="../img/profile.png"/></a>
+                    <a href="#"><img class="profile-pic" src="../img/profile.png" /></a>
                     <h2 id="profileName"></h2>
                 </div>
             </section>
@@ -57,39 +58,47 @@
                     <a href="configuracoes.html" class="config">Configurações</a>
                     <a href="index.html">&#8592;Sair</a>
                 </nav>
-            </section>        
+            </section>
         </div>
         <main id="mainContent" class="container-fluid margem">
-            <div class="row ">
-                <div class="col-12 card">
-                    <img src="../img/imagem comunidade.jpg" class="imgbro">
+            <button type="button" class="btn btn-success text-center" data-toggle="modal" data-target="#addComunidadeModal">
+                Nova Comunidade
+            </button>
+        </main>
+
+        <!-- Modal Comunidade -->
+        <div class="modal fade" id="addComunidadeModal" tabindex="-1" role="dialog"
+            aria-labelledby="escreverPostModalTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Criar comunidade</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form id="comunidadeForm">
+                        <div class="modal-body form-group">
+                            <label for="comunidadeTituloInput">Título:</label>
+                            <input id="comunidadeTituloInput" class="form-control" type="text" minlength="6"
+                                maxlength="20" required />
+                            <label for="comunidadeUrlInput">Url:</label>
+                            <input id="comunidadeUrlInput" class="form-control inputtext" type="url" maxlength="50"
+                                placeholder="https://exemplo.com" required />
+                            <label for="comunidadeDescricaoInput">Descrição:</label>
+                            <textarea id="comunidadeDescricaoInput" class="form-control inputtext" type="text"
+                                maxlength="50" required></textarea>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                            <button type="submit" class="btn btn-primary">Criar</button>
+                        </div>
+                    </form>
+
                 </div>
             </div>
+        </div>
 
-                <div class="col-12 card facebook">
-                   <div class="card-body">
-                      <a href="https://www.facebook.com/">
-                        <img src="../img/face.jpg" class="imgfb" >
-                      </a>
-                   </div>
-                </div>
-
-                <div class="col-12 card wpp">
-                    <div class="card-body">
-                        <a href="https://web.whatsapp.com/">
-                            <img src="../img/wpp.png" class="imgwpp" >
-                        </a>
-                    </div>  
-                </div>
-
-                <div class="col-12 card insta">
-                    <div class="card-body">
-                        <a href="https://www.instagram.com/">
-                            <img src="../img/insta.jpg" class="imgins" >
-                        </a>
-                    </div>
-                </div>
-        </main>
     </div>
 </body>
 

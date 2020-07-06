@@ -35,8 +35,12 @@ class ComunidadeController {
 
         //Business Logic
         if (result) {
-            if (model.titulo.length < 6)
-                falseCallback("\"Título\" não pode ser menor que 6 caracteres");
+            if (model.titulo.length < 6 || model.titulo.length > 20)
+                falseCallback("campo \"titulo\" não pode ter mais que 20 ou menos de 6 caracteres");
+            else if (model.titulo.descricao > 50)
+                falseCallback("campo \"descricao\" não pode ter mais que 50 caracteres");
+            else if (!validarUrl(model.url))
+                falseCallback("campo \"url\" informada é inválida");
             else {
                 this.filter(
                     function (e) { return e.titulo == model.titulo && e.id != model.id },
@@ -92,28 +96,29 @@ class ComunidadeController {
 
     //#region Special methods
 
-    createComunidadeCard(model, imagem) {
-        let result =
-            ('<div class="col-12 card insta">' +
-                '<div class="card-header">' +
-                '{titulo}' +
-                '</div>' +
-                '<div class="card-body">' +
-                '<a href="{url}">' +
-                '<img src="{imagem}" class="imgins">' +
-                '</a>' +
-                '<p>' +
-                '{descricao}' +
-                '<small>Local: <a href="{url}">{url}</a></small>' +
-                '</p>' +
-                '</div>' +
-                '</div>')
-                .replace(/{titulo}/g, model.titulo)
-                .replace(/{url}/g, model.url)
-                .replace(/{descricao}/g, model.descricao)
-                .replace(/{imagem}/g, model.imagem);
-
-        return result;
+    createComunidadeCard(model, userController, callback) {
+        userController.read(
+            model.idUser,
+            function (user) {
+                callback(
+                    ('<div class="w-100 card insta">' +
+                    '<div class="card-header w-100">' +
+                    '<h3>{titulo}</h3>' +
+                    '</div>' +
+                    '<div class="card-body w-100">' +
+                    '<p>{descricao}</p>' +
+                    '<p><small>Anexado por: {user.nome} | Local: <a target="_blank" href="{url}">{url}</a></small></p>' +
+                    '</div>' +
+                    '</div>')
+                    .replace(/{titulo}/g, model.titulo)
+                    .replace(/{url}/g, model.url)
+                    .replace(/{descricao}/g, model.descricao)
+                    .replace(/{imagem}/g, model.imagem)
+                    .replace(/{user.nome}/g, user.nome)
+                );
+            },
+            function () { } 
+        );
     }
 
     //#endregion
