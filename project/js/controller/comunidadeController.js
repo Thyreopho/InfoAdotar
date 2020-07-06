@@ -35,10 +35,10 @@ class ComunidadeController {
 
         //Business Logic
         if (result) {
-            if (model.titulo.length < 6 || model.titulo.length > 20)
-                falseCallback("campo \"titulo\" não pode ter mais que 20 ou menos de 6 caracteres");
-            else if (model.titulo.descricao > 50)
-                falseCallback("campo \"descricao\" não pode ter mais que 50 caracteres");
+            if (model.titulo.length < 5 || model.titulo.length > 40)
+                falseCallback("campo \"titulo\" não pode ter mais que 40 ou menos de 5 caracteres");
+            else if (model.titulo.descricao > 100)
+                falseCallback("campo \"descricao\" não pode ter mais que 100 caracteres");
             else if (!validarUrl(model.url))
                 falseCallback("campo \"url\" informada é inválida");
             else {
