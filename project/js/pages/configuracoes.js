@@ -17,7 +17,7 @@ function newName(){
     
    userController.update(novoNome,
     function(){
-        alert("Sucesso ao mudar o nome!")
+        alert("Sucesso ao mudar o nome!Por favor saia e entre em sua conta novamente.")
     },
     function(msg){
         alert("Erro ao mudar o nome:"+msg)
@@ -47,7 +47,7 @@ function newSenha(){
       
      userController.update(novasenha,
       function(){
-          alert("Sucesso ao mudar senha!")
+          alert("Sucesso ao mudar senha!Por favor saia e entre em sua conta novamente.")
       },
       function(msg){
           alert("Erro ao mudar senha:"+msg)

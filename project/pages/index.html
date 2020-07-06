@@ -49,7 +49,36 @@
                 </div>
                 <div class="form-action-div">
                     <ul>
-                        <li><a href="#">Esqueci minha senha</a></li>
+                        <li><a href="#" data-toggle="modal" data-target="#exampleModal">Esqueci minha senha</a></li>
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Alterar Senha:</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <h5>Email:</h5>
+                                            <input class="form-control" type="email" id="email">
+                                        <h5>Nome:</h5>
+                                            <input class="form-control" type="text" id="nome">
+                                         <h5>Senha:</h5>
+                                            <input class="form-control" type="password" id="senha">
+                                        <h5>Nova senha:</h5>
+                                            <input class="form-control" type="password" id="confirmsenha">
+                                        
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-primary">Save changes</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <li><a href="cadastro.html">Novo aqui? Crie uma conta!</a></li>
                     </ul>
                     <button type="submit" class="btn btn-outline-light">

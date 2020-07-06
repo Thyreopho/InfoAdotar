@@ -5,7 +5,52 @@ var passoController;
 var comunidadeController;
 
 //#endregion
+function newSenha(){
 
+    let senha=$("#senha").val();
+    let confirmsenha=$("#confirmsenha").val();
+  
+    
+  if(senha==confirmsenha){
+    userController.read(loggedUser.id,
+     function (usuarioLogado) {
+          let novasenha = usuarioLogado;
+           novasenha.senha = senha;
+          
+      
+     userController.update(novasenha,
+      function(){
+          alert("Sucesso ao mudar senha!Por favor saia e entre em sua conta novamente.")
+      },
+      function(msg){
+          alert("Erro ao mudar senha:"+msg)
+  
+      }
+     )
+      },
+      
+      function (msg) {
+          alert("Erro ao mudar senha:" + msg);
+      }
+          )
+    }else{
+        alert("Senhas diferentes.")
+    }
+  
+  }
+function EsqueciSenha(){
+ let email=$("#email").val().toLowerCase();
+ let nome=$("#nome").val();
+ 
+ let emailverdadeiro= $("#loginFormEmail").val().toLowerCase();
+ let nomeverdadeiro=$("#cadastroNome").val();
+   if(email==emailverdadeiro && nome==nomeverdadeiro){
+     newSenha();
+   }else{
+       alert("Nome ou email não encontrados!");
+   }
+
+}
 $(document).ready(function() {
     $("#loginForm").submit(function(e) {
         e.preventDefault();
