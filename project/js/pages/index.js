@@ -5,62 +5,71 @@ var passoController;
 var comunidadeController;
 
 //#endregion
-function newSenha(){
 
-    let senha=$("#senha").val();
-    let confirmsenha=$("#confirmsenha").val();
-  
-    
-  if(senha==confirmsenha){
-    userController.read(loggedUser.id,
-     function (usuarioLogado) {
-          let novasenha = usuarioLogado;
-           novasenha.senha = senha;
-          
-      
-     userController.update(novasenha,
-      function(){
-          alert("Sucesso ao mudar senha!")
-      },
-      function(msg){
-          alert("Erro ao mudar senha:"+msg)
-  
-      }
-     )
-      },
-      
-      function (msg) {
-          alert("Erro ao mudar senha:" + msg);
-      }
-          )
-    }else{
-        alert("Senhas diferentes.")
-    }
-  
-  }
-function EsqueciSenha(){
- let email=$("#email").val().toLowerCase();
- let nome=$("#nome").val();
- 
- 
- userController.read(loggedUser.id,
-    function (usuarioLogado) {
-         let usuario = usuarioLogado;
-         let nomeverdadeiro= usuario.nome;
-         let emailverdadeiro=usuario.email;
-         console.log(nomeverdadeiro,emailverdadeiro);
-         if(email==emailverdadeiro && nome==nomeverdadeiro){
-            newSenha();
-          }else{
-              alert("Nome ou email não encontrados!");
-          }
-   }
- )
+//Verifica se o usuário com o nome e senha informados existe e 
+//se sim retorna-o pela funçao success
+function ValidarUsuario(nome, email, success, error) {
+    userController.filter(
+        function (item) { return item.nome == nome && item.email == email.toLowerCase(); },
+        function (userList) {
+            if (userList.length > 0) {
+                success(userList[0]);
+            } else {
+                error("Nome e/ou Email incorreto(s), tente novamente");
+            }
+        },
+        function () { error("Nome e/ou Email incorreto(s), tente novamente") }
+    );
 }
 
+//Altera a senha do usuário do modelo informado
+function AlteraSenha(userModel, novaSenha, confirmaSenha, success, error) {
+    if(novaSenha !== confirmaSenha) {
+        error("Senhas não batem, tente novamente")
+    } else {
+        let userNovaSenha = userModel;
+        userNovaSenha.senha = novaSenha;
+        userController.update(
+            userNovaSenha,
+            function () { success(); },
+            function (msg) { error("Erro ao alterar a senha: " + msg); }
+        );
+    }
+}
 
-$(document).ready(function() {
-    $("#loginForm").submit(function(e) {
+//Fecha o modal e limpa os campos
+function FecharEsqueciMinhaSenhaModal() {
+    $("#esqueciMinhaSenhaEmailInput").val("");
+    $("#esqueciMinhaSenhaNomeInput").val("");
+    $("#esqueciMinhaSenhaSenhaInput").val("");
+    $("#esqueciMinhaSenhaConfirmsenhaInput").val("");
+
+    $("#esqueciMinhaSenhaModal").modal("hide");
+}
+
+$(document).on("userNotLogged", function () {
+    //Gatilho para altear a senha
+    $("#esqueciMinhaSenhaForm").submit(function (e) {
+        e.preventDefault();
+        ValidarUsuario(
+            $("#esqueciMinhaSenhaNomeInput").val(),
+            $("#esqueciMinhaSenhaEmailInput").val(),
+            function (user) {
+                AlteraSenha(
+                    user,
+                    $("#esqueciMinhaSenhaSenhaInput").val(),
+                    $("#esqueciMinhaSenhaConfirmsenhaInput").val(),
+                    function () { alert("Senha alterada com sucesso!"); FecharEsqueciMinhaSenhaModal(); },
+                    function (msg) { alert(msg); }
+                );
+            },
+            function (msg) { alert(msg); }
+        );
+    });
+});
+
+$(document).ready(function () {
+    $("#loginForm").submit(function (e) {
         e.preventDefault();
         userController.login(
             $("#loginFormEmail").val().toLowerCase(),
@@ -122,7 +131,7 @@ $(document).on("setDevDataBase", function () {
             function (msg) {
                 alert("Erro na criação do banco de dados de teste: " + msg)
             });
-        
+
         //Criando Passos
         let createPassos = function () {
             data.TbPasso.forEach(function (val) {
