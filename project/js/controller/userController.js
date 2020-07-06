@@ -3,7 +3,7 @@
 //</summary>
 function User(nome, email, senha, tipo) {
     this.nome = nome;
-    this.email = email.toLowerCase();
+    this.email = email;
     this.senha = senha;
     this.tipo = tipo;
 }

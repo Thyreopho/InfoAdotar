@@ -3,7 +3,68 @@
 //para acessar os dados do localstorage
 //Obs: a variavel userController já está definida
 //então não é necessário ser declarada
+function newName(){
 
+  let nomenew = $("#alteracaoNome").val();
+
+  
+  
+  userController.read(loggedUser.id,
+   function (usuarioLogado) {
+        let novoNome = usuarioLogado;
+         novoNome.nome = nomenew;
+        
+    
+   userController.update(novoNome,
+    function(){
+        alert("Sucesso ao mudar o nome!")
+    },
+    function(msg){
+        alert("Erro ao mudar o nome:"+msg)
+
+    }
+   )
+    },
+    
+    function (msg) {
+        alert("Erro ao mudar o nome:" + msg);
+    }
+        )
+
+}
+function newSenha(){
+
+    let senha = $("#senha1").val();
+    let confirmsenha=$("#senhaconfirm").val();
+  
+    
+  if(senha==confirmsenha){
+    userController.read(loggedUser.id,
+     function (usuarioLogado) {
+          let novasenha = usuarioLogado;
+           novasenha.senha = senha;
+          
+      
+     userController.update(novasenha,
+      function(){
+          alert("Sucesso ao mudar senha!")
+      },
+      function(msg){
+          alert("Erro ao mudar senha:"+msg)
+  
+      }
+     )
+      },
+      
+      function (msg) {
+          alert("Erro ao mudar senha:" + msg);
+      }
+          )
+    }else{
+        alert("Senhas diferentes.")
+    }
+  
+  }
 //#endregion
 
 //Espaço que é chamado quando o susário é verificado
@@ -16,6 +77,8 @@ $(document).on("userLogged", function () {
         //Obs: olhar js/main.js
 
     //#endregion
+    $("#btnConfirm").click(newName);
+    $("#btnconfirmsenha").click(newSenha);
 
     //Exemplos:
         

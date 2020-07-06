@@ -76,18 +76,14 @@
                         Senha
                       </button>
                 </h3>
-                <h3>
-                    <button type="button" class="btn btn-simple" data-toggle="modal" data-target="#excluirConta">
-                        Excluir conta
-                      </button>
-                </h3>
+                
 
 
             </div>
             <div id="botaoVoltar" class="col-12">
-                <button type="button" class="btn btn-simple" data-toggle="modal" data-target="#voltar">
+               <a href="home.html"><button type="button" class="btn btn-simple" data-toggle="modal" data-target="#voltar">
                     Voltar
-                  </button>
+                  </button></a>
             </div>
 
 
@@ -96,17 +92,17 @@
                     <div class="modal-dialog modal-dialog-centered" role="document">
                       <div class="modal-content">
                         <div class="modal-header">
-                          <h5 class="modal-title" id="exampleModalLongTitle">Novo nome</h5>
+                          <h5 class="modal-title" >Novo nome</h5>
                           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                           </button>
                         </div>
                         <div class="modal-body">
-                            <input class="form-control" type="text" placeholder="" aria-label="Search">
+                            <input id="alteracaoNome" class="form-control" type="text" >
                         </div>
                         <div class="modal-footer">
                           <button type="button" class="btn btn-secondary" data-dismiss="modal">Sair</button>
-                          <button type="button" class="btn btn-primary">Confirmar</button>
+                          <button type="button" class="btn btn-primary" id="btnConfirm">Confirmar</button>
                         </div>
                       </div>
                     </div>
@@ -115,45 +111,28 @@
                     <div class="modal-dialog modal-dialog-centered" role="document">
                       <div class="modal-content">
                         <div class="modal-header">
-                          <h5 class="modal-title" id="exampleModalLongTitle">Senha</h5>
+                          <h5 class="modal-title" id="exampleModalLongTitle"> Nova senha</h5>
                           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                           </button>
                         </div>
                         <div class="modal-body">
-                            <input class="form-control" type="text" placeholder="" aria-label="Search">
+                            <input class="form-control" type="password" id="senha1">
                         </div>
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLongTitle">Nova senha</h5>
+                            <h5 class="modal-title" id="exampleModalLongTitle">Confirmar nova senha</h5>
                           </div>
                           <div class="modal-body">
-                              <input class="form-control" type="text" placeholder="" aria-label="Search">
+                              <input class="form-control" type="password" id="senhaconfirm">
                           </div>
                         <div class="modal-footer">
                           <button type="button" class="btn btn-secondary" data-dismiss="modal">Sair</button>
-                          <button type="button" class="btn btn-primary">Confirmar</button>
+                          <button type="button" id="btnconfirmsenha" class="btn btn-primary">Confirmar</button>
                         </div>
                       </div>
                     </div>
                   </div>
-                  <div class="modal fade" id="excluirConta" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered" role="document">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h5 class="modal-title" id="exampleModalLongTitle">Deseja excluir a conta?</h5>
-                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                          </button>
-                        </div>
-                        <div class="modal-body">
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
-                          <button type="button" class="btn btn-primary">Sim</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                  
             </div>
         </main>
     </div>
